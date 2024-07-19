@@ -1,0 +1,31 @@
+# lightning.pytorch==2.0.0
+seed_everything: true
+trainer:
+  accelerator: auto
+  strategy: auto
+  devices: auto
+  num_nodes: 1
+  precision: 32
+  logger:
+    class_path: TensorBoardLogger
+    init_args:
+      # select logging path
+      save_dir: 'logs'
+      name: 'visda'
+  log_every_n_steps: 5
+  max_epochs: 1
+  min_epochs: null
+  check_val_every_n_epoch: 1
+  enable_checkpointing: False
+model:
+  class_path: networks.SourceModule
+  init_args:
+    rejection_threshold: 0.5
+    feature_dim: 256  # choose same number of feature dimensions as used for the source model (default is 256)
+    ckpt_dir: 'source_models/visda/source_model_OPDA/checkpoints/source_ckpt.pt'  # select pre-trained source model matching the desired source domain and category shift
+data:
+  class_path: datasets.VisDADataModule  # change to datasets.DomainNetDataModule for DomainNet dataset
+  init_args:
+    batch_size: 64
+    category_shift: 'OPDA'  # select category shift scenario
+    test_domain: 'sketch'  # select source domain

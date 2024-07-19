@@ -1,0 +1,7 @@
+lightning==2.3.3
+numpy==2.0.0
+Pillow==10.4.0
+scipy==1.14.0
+torch==2.3.1
+torchmetrics==1.4.0.post0
+torchvision==0.18.1

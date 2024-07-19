@@ -1,0 +1,30 @@
+# lightning.pytorch==2.0.0
+seed_everything: true
+trainer:
+  accelerator: auto
+  strategy: auto
+  devices: auto
+  num_nodes: 1
+  precision: 32
+  logger:
+    class_path: TensorBoardLogger
+    init_args:
+      save_dir: 'source_models'
+      name: 'visda/source_model_OPDA'  # select storage directory
+      version: ''
+  log_every_n_steps: 5
+  max_epochs: 10  # we used 50 for DomainNet and 10 for VisDA-C
+  min_epochs: null
+  check_val_every_n_epoch: 1
+  enable_checkpointing: False
+model:
+  class_path: networks.SourceModule
+  init_args:
+    feature_dim: 256
+    lr: 1e-3  # we used 1e-2 for DomainNet and 1e-3 for VisDA-C
+data:
+  class_path: datasets.VisDADataModule  # change to datasets.DomainNetDataModule for DomainNet dataset
+  init_args:
+    batch_size: 64
+    category_shift: 'OPDA'  # select category shift scenario
+    train_domain: 'train'  # select domain for source training
