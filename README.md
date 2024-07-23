@@ -1,6 +1,6 @@
 # Memory-Efficient Pseudo-Labeling for Online Source-Free Universal Domain Adaptation using a Gaussian Mixture Model
 
-This is the official repository to the paper "Memory-Efficient Pseudo-Labeling for Online Source-Free Universal Domain Adaptation using a Gaussian Mixture Model".
+This is the official repository to the paper ["Memory-Efficient Pseudo-Labeling for Online Source-Free Universal Domain Adaptation using a Gaussian Mixture Model"](https://arxiv.org/abs/2407.14208).
 
 ## Usage
 ### Preparation
